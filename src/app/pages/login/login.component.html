@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+    <div class="container-register100" style="background-image: url('assets/544750.jpg')">
+      <div class="row" style="margin-top: 20px">
+        <div class="wrap-login100 col-md-6 offset-md-3">
+          <h1 class="login100-form-title mt20 p-b-53" style="text-align: center">Sign Up</h1>
+  
+          <!--        {{user | json}}-->
+          <form (ngSubmit)="formSubmit()" class="login100-form">
+  
+            <!--          Username field-->
+            <div class="social">
+              <a class="btn-face m-b-20 mb10 " href="#">
+                <i class="fab fa-facebook-square"></i>
+                Facebook
+              </a>
+              <a class="btn-google m-b-20 mb10" href="#">
+                <img alt="Google" src="assets/icon-google.png">
+                Google
+              </a>
+            </div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Username</mat-label>
+              <input [(ngModel)]="loginData.username" class="input100" matInput name="username" placeholder="Enter Here"
+                     required>
+              <span class="focus-input100"></span>
+              <mat-hint>Valid UserName !!</mat-hint>
+            </mat-form-field>
+  
+            <!--          Password field-->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="loginData.password" matInput name="password" placeholder="Enter Here" required
+                     type="password">
+              <span class="focus-input100"></span>
+            </mat-form-field>
+  
+            <div class="container text-center">
+              <button class="full-width" color="primary" mat-raised-button style="margin-bottom: 10px" type="submit">Sign
+                Up
+              </button>
+  
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
