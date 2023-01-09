@@ -25,6 +25,14 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import {FormsModule} from "@angular/forms";
 import { authInterceptorProvides } from './services/auth.interceptor';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { ViewProductComponent } from './pages/admin/view-product/view-product.component';
+import { ViewOderComponent } from './pages/admin/view-oder/view-oder.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { AddProductComponent } from './pages/admin/add-product/add-product.component';
+import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +42,15 @@ import { SignupComponent } from './pages/signup/signup.component';
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    SignupComponent
+    SignupComponent,
+    SidebarComponent,
+    ViewCategoriesComponent,
+    ViewProductComponent,
+    ViewOderComponent,
+    AddCategoryComponent,
+    UpdateCategoryComponent,
+    AddProductComponent,
+    UpdateProductComponent
   ],
     imports: [
         BrowserModule,

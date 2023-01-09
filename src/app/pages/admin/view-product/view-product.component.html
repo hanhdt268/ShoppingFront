@@ -1,0 +1,23 @@
+<mat-card *ngFor="let item of product" class="mt20">
+    <mat-card-header>
+      <img src="{{item.images}}" style="width: 20px; height: 28px;" class="images-fluid">
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <mat-card-subtitle>{{item.category.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>{{item.description}}</mat-card-content>
+    <mat-card-content>Gia tien: {{item.price}} VND</mat-card-content>
+    <mat-card-content>Giam gia: {{item.discountPrice}} VND</mat-card-content>
+    <mat-card-actions>
+      <button [routerLink]="'/admin/view-question/'+item.qId+'/'+item.title" color="primary" mat-flat-button>Details
+      </button>
+      <button class="ml20" color="primary" mat-stroked-button>Max Marks: {{item.maxMarks}}</button>
+      <button class="ml20" color="primary" mat-stroked-button>Question: {{item.numberOfQuestion}}</button>
+      <button [routerLink]="'/admin/product/'+item.pId" class="ml20" color="primary" mat-flat-button>Update</button>
+      <button (click)="delete(item.pId)"  class="ml20" color="warn" mat-flat-button>Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  <div class="container text-center mt20">
+    <button color="primary" mat-raised-button routerLink="/admin/add-product">Add New Product</button>
+  </div>
+  

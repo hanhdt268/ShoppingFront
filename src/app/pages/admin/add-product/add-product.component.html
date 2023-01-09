@@ -1,0 +1,75 @@
+<mat-card>
+    <h1>Add New Product</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+  
+          <form #productForm="ngForm" (ngSubmit)="addSubmit(productForm)">
+            <mat-form-field appearance="fill" class="w100">
+              <mat-label>Enter Title</mat-label>
+              <input [(ngModel)]="product.title" matInput name="title" placeholder="Enter Here" type="text">
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill" class="w100">
+              <mat-label>Enter description</mat-label>
+              <textarea [(ngModel)]="product.description" matInput name="description" placeholder="Enter Here"
+                        rows="5" type="text"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w100">
+                <mat-label>Link imagesMain</mat-label>
+                <input [(ngModel)]="product.images" matInput name="images" placeholder="Enter Here"
+                          rows="5" type="text">
+              </mat-form-field>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="w100">
+                  <mat-label>price</mat-label>
+                  <input [(ngModel)]="product.price" matInput name="price" placeholder="Enter Here"
+                         type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="w100">
+                  <mat-label>discountPrice</mat-label>
+                  <input [(ngModel)]="product.discountPrice" matInput name="discountPrice"
+                         placeholder="Enter Here" type="text">
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-slide-toggle
+              [(ngModel)]="product.active"
+              [checked]="false"
+              class="mt10"
+              color="accent"
+              name="active">
+              Publish status
+            </mat-slide-toggle>
+            <br>
+            <!--          category select-->
+            <mat-form-field appearance="fill" class="w100 mt10">
+              <mat-label>Categories</mat-label>
+              <mat-select [(ngModel)]="product.category.cId" name="category">
+                <mat-option *ngFor="let item of categories" [value]="item.cId">
+                  {{item.title}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            
+
+            <div class="container text-center">
+              <button color="primary" type="submit" mat-raised-button>Add</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <input type="file" miltiple value="select" #selectFile
+          (change)="onFileSelected($event)">
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  
+  
