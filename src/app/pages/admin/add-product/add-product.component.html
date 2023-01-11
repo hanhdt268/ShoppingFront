@@ -3,13 +3,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-  
+
           <form #productForm="ngForm" (ngSubmit)="addSubmit(productForm)">
             <mat-form-field appearance="fill" class="w100">
               <mat-label>Enter Title</mat-label>
               <input [(ngModel)]="product.title" matInput name="title" placeholder="Enter Here" type="text">
             </mat-form-field>
-    
+
             <mat-form-field appearance="fill" class="w100">
               <mat-label>Enter description</mat-label>
               <textarea [(ngModel)]="product.description" matInput name="description" placeholder="Enter Here"
@@ -21,7 +21,7 @@
                 <input [(ngModel)]="product.images" matInput name="images" placeholder="Enter Here"
                           rows="5" type="text">
               </mat-form-field>
-  
+
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field appearance="fill" class="w100">
@@ -57,7 +57,7 @@
               </mat-select>
             </mat-form-field>
 
-            
+
 
             <div class="container text-center">
               <button color="primary" type="submit" mat-raised-button>Add</button>
@@ -65,11 +65,35 @@
           </form>
         </div>
         <div class="col-md-6">
-          <input type="file" miltiple value="select" #selectFile
+          <div>
+            <input type="file" multiple value="select" #selectFile
           (change)="onFileSelected($event)">
+          {{product.productImages}}
+          </div>
+          <br>
+          <div class="mt10">
+            <div class="row">
+               <!-- <mat-grid-list *ngFor="let file of product.productImages" cols="4" rowHeight="1:1">
+                <mat-grid-tile >
+                  {{file}}
+                  <div style="position: relative">
+                      <img [src]="file.url" width="100px" height="100px">
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list> -->
+              
+              <div *ngFor="let file of product.productImages; let i = index">
+                <div class="title">
+                  <div style="position: relative">
+                    <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                    <img  [src]="file.url" width="100px" height="100px">
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </mat-card>
-  
-  
+

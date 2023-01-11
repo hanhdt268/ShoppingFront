@@ -8,22 +8,21 @@
        class="example-icon favorite-icon mr20 m120"
        mat-icon-button
        routerLinkActive="active">Login
-  
+
     </a>
     <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" aria-label="Example icon-button with share icon"
        class="example-icon mr10"
        mat-icon-button
        routerLinkActive="active">Register
     </a>
-  
-  
+
+
     <button *ngIf="isLoggedIn && user" aria-label="Example icon-button with share icon" class="example-icon mr20"
             mat-icon-button
-            routerLink="/admin/profile"
+            routerLink="/admin"
             style="margin-right: 50px">{{user.username}}
     </button>
     <a (click)="logout()" *ngIf="isLoggedIn" aria-label="Example icon-button with share icon" class="example-icon mr10"
        mat-icon-button>LogOut
     </a>
   </mat-toolbar>
- 

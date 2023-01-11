@@ -8,7 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from "@angular/material/icon";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
@@ -33,6 +33,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,10 @@ import { UpdateProductComponent } from './pages/admin/update-product/update-prod
         MatInputModule,
         MatFormFieldModule,
         MatIconModule,
-        FormsModule
+        FormsModule,
+        MatGridListModule,
+        
+        
 
 
     ],

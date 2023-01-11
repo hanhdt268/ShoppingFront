@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,10 +11,11 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddProductComponent implements OnInit {
-
+public rsultImage="";
   categories: any = []
   product: Product={
     title: '',
@@ -28,7 +29,7 @@ export class AddProductComponent implements OnInit {
       cId: '',
     }
   }
-    
+
   constructor(private _snack: MatSnackBar, private _category: CategoriesService, private _product: ProductService,
     private _sanitizer: DomSanitizer) { }
 
@@ -55,6 +56,7 @@ export class AddProductComponent implements OnInit {
     this._product.addProduct(productFormData).subscribe({
       next: (data: Product) => {
         Swal.fire('Successfully', 'Add Quiz Successfully', "success")
+        this.product.productImages = []
         productForm.reset();
       },
       error: (error) => {
@@ -81,16 +83,33 @@ export class AddProductComponent implements OnInit {
     return formData;
   }
   onFileSelected(event: any){
+    // console.log(event)
     if(event.target.files){
       const file = event.target.files[0];
+      console.log( window.URL.createObjectURL(file))
       const fileHandle: FileHandle ={
         file: file,
-        url: this._sanitizer.bypassSecurityTrustUrl(
+        url:  this._sanitizer.bypassSecurityTrustUrl(
           window.URL.createObjectURL(file)
         )
       }
-      this.product.productImages.push(fileHandle)
+      this.product.productImages.push(fileHandle);
+      }
+      
+      
+
+      // console.log(this.product.productImages.length)
+      // console.log(this.product.productImages)
+
+    //   let reader = new FileReader();
+    // reader.onload = (e) =>{
+    //  this.rsultImage = e.target?.result ? e.target?.result.toString() : "";
+    // }
+    // reader.readAsDataURL(file);
     }
 
-  }
+    removeImage(i:number){
+        this.product.productImages.splice(i,1);
+    }
+  
 }

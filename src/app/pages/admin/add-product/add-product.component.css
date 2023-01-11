@@ -1,3 +1,18 @@
 .w100{
     width: 100%;
 }
+.title{
+    border: 2px solid rgb(243, 234, 225);
+}
+.btn-remove-image{
+    position: absolute;
+    cursor: pointer;
+    top: -1px;
+    right: -1px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: auto;
+    text-align: center;
+}
