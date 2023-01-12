@@ -16,3 +16,26 @@
     height: auto;
     text-align: center;
 }
+.dropzone{
+    height: 100px;
+    min-width: 100px;
+    display: table;
+    background-color: #eee;
+    width: 300px;
+    border: dashed 1px #aaa;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.text-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+/* .centerd{
+    text-align: center;
+} */
+.browse-button{
+    color: blue;
+    cursor: pointer;
+}

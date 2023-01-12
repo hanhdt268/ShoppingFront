@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { map } from 'rxjs';
+import { ImageProcessingService } from 'src/app/services/image-processing.service';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/_model/Product.model';
 import Swal from 'sweetalert2';
+import { ShowProductImagesDialogComponent } from '../show-product-images-dialog/show-product-images-dialog.component';
 
 @Component({
   selector: 'app-view-product',
@@ -9,14 +14,18 @@ import Swal from 'sweetalert2';
 })
 export class ViewProductComponent implements OnInit {
 
-  product: any =[]
-  constructor(private _product: ProductService) { }
-
+  productDetails: Product[] =[]
+  constructor(private _product: ProductService, private _imagesDialog: MatDialog, private _imageProcessing: ImageProcessingService) { }
+  displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Images','Edit','Delete'];
   ngOnInit(): void {
-    this._product.getAllProduct().subscribe({
-      next: (data: any) => {
+    this._product.getAllProduct()
+    .pipe(
+      map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
+    )
+    .subscribe({
+      next: (data: Product[]) => {
         console.log(data);
-        this.product = data
+        this.productDetails = data
       },
       error: (error) => {
         console.log(error);
@@ -36,7 +45,7 @@ export class ViewProductComponent implements OnInit {
       if (result.isConfirmed) {
         this._product.deleteProduct(pId).subscribe({
           next: (data: any) => {
-            this.product = this.product.filter((product: any) => product.pId != pId)
+            this.productDetails = this.productDetails.filter((product: any) => product.pId != pId)
             Swal.fire('Successfully', 'Quiz deleted', 'success')
           },
           error: (error) => {
@@ -45,6 +54,16 @@ export class ViewProductComponent implements OnInit {
           }
         })
       }
+    })
+  }
+  openImages(product: Product){
+    console.log(product);
+    this._imagesDialog.open(ShowProductImagesDialogComponent,{
+      data: {
+        images: product.productImages
+      },
+      height: '500px',
+      width: '800px'
     })
   }
 }

@@ -29,7 +29,7 @@ export class ProductService {
 
   //get all
   public getAllProduct(){
-    return this._http.get(`${this.apiBaseUrl}/product/`)
+    return this._http.get<Product[]>(`${this.apiBaseUrl}/product/`)
   }
 
   //delete 

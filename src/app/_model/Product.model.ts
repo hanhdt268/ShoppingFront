@@ -9,6 +9,6 @@ export interface Product{
     active: boolean,
     productImages: FileHandle[]
     category: {
-        cId: string
+        cId: string,
     }
 }

@@ -34,6 +34,11 @@ import { UpdateCategoryComponent } from './pages/admin/update-category/update-ca
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DragDirective } from './drag.directive';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ShowProductImagesDialogComponent } from './pages/admin/show-product-images-dialog/show-product-images-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +56,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AddCategoryComponent,
     UpdateCategoryComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    DragDirective,
+    ShowProductImagesDialogComponent,
+   
   ],
     imports: [
         BrowserModule,
@@ -72,10 +80,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatIconModule,
         FormsModule,
         MatGridListModule,
-        
-        
-
-
+        MatTableModule,
+        MatDialogModule
     ],
   providers: [authInterceptorProvides],
   bootstrap: [AppComponent]

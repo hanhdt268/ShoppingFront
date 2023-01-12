@@ -112,4 +112,7 @@ public rsultImage="";
         this.product.productImages.splice(i,1);
     }
   
+    fileDropped(fileHandler: FileHandle){
+this.product.productImages.push(fileHandler)
+    }
 }
