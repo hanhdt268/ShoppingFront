@@ -4,7 +4,7 @@
       <div class="col-md-6 offset-md-2 ">
             <div class="d-flex form-inputs ">
               <input class="form-control w100"  type="text" placeholder="Search any product...">
-              <button mat-list-item class="test" routerLink="/home">
+              <button mat-list-item class="test" routerLink="/">
                 <mat-icon mat-list-icon>search</mat-icon>
               </button>
               </div>
@@ -14,6 +14,41 @@
 </mat-card>
 
 
+  <div class="bootstrap-wrapper">
+    <div class="container-fluid mt20">
+      <div class="row">
+        <div class="col-md-2">
+          <h1>md2</h1>
+        </div>
+        <div class="col-md-10">
+          <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
+            <mat-grid-tile *ngFor="let product of productDetails">
+              <div class="row home-page-product-image">
+                <img [src]="product.productImages[0].url" width="200px" height="200px">
+                <div class="mt10">
+                  <p><b>{{product.title}}</b></p>
+                </div>
+                <div class="mt10">
+                  <p style="white-space: inherit;height: 40px;width: 288px;overflow: hidden; word-wrap: break-word; text-overflow: ellipsis;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                </div>
+                <div class="mt20">
+                  <b>{{product.discountPrice}}</b> &nbsp;  <b style="text-decoration: line-through">{{product.price}}</b>
+                </div>
+                <div class="mt30 text-center">
+                  <button mat-raised-button color="primary">View Details</button>
+                </div>
+              </div>
 
-  
-  
+            </mat-grid-tile>
+
+          </mat-grid-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+

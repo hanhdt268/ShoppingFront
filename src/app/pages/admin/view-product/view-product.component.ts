@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ImageProcessingService } from 'src/app/services/image-processing.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -15,9 +16,11 @@ import { ShowProductImagesDialogComponent } from '../show-product-images-dialog/
 export class ViewProductComponent implements OnInit {
 
   productDetails: Product[] =[]
-  constructor(private _product: ProductService, private _imagesDialog: MatDialog, private _imageProcessing: ImageProcessingService) { }
+  constructor(private _product: ProductService, private _imagesDialog: MatDialog, private _imageProcessing: ImageProcessingService,
+    private _route: Router) { }
   displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Images','Edit','Delete'];
   ngOnInit(): void {
+    // @ts-ignore
     this._product.getAllProduct()
     .pipe(
       map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
@@ -65,5 +68,8 @@ export class ViewProductComponent implements OnInit {
       height: '500px',
       width: '800px'
     })
+  }
+  editProductDetails(pId: any){
+      this._route.navigate(['/admin/add-product',{pId: pId}])
   }
 }

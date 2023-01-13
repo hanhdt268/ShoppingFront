@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { FileHandle } from 'src/app/_model/file-handle.model';
 import { Product } from 'src/app/_model/Product.model';
 import Swal from 'sweetalert2';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-add-product',
@@ -15,9 +16,14 @@ import Swal from 'sweetalert2';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddProductComponent implements OnInit {
-public rsultImage="";
+
+
+   isNewProduct = true;
   categories: any = []
+
   product: Product={
+    // @ts-ignore
+    pId: null,
     title: '',
     description: '',
     price: '',
@@ -31,9 +37,10 @@ public rsultImage="";
   }
 
   constructor(private _snack: MatSnackBar, private _category: CategoriesService, private _product: ProductService,
-    private _sanitizer: DomSanitizer) { }
+    private _sanitizer: DomSanitizer, private _activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this._category.categories().subscribe({
       next: (data: any) => {
         this.categories = data;
@@ -44,6 +51,10 @@ public rsultImage="";
         Swal.fire('Error', 'Error in loading data from serve', 'error')
       }
     })
+    this.product = this._activeRoute.snapshot.data['product'];
+    if (this.product && this.product.pId){
+      this.isNewProduct = false;
+    }
   }
   addSubmit(productForm: NgForm) {
     const productFormData = this.prepareFormData(this.product)
@@ -95,8 +106,8 @@ public rsultImage="";
       }
       this.product.productImages.push(fileHandle);
       }
-      
-      
+
+
 
       // console.log(this.product.productImages.length)
       // console.log(this.product.productImages)
@@ -111,7 +122,7 @@ public rsultImage="";
     removeImage(i:number){
         this.product.productImages.splice(i,1);
     }
-  
+
     fileDropped(fileHandler: FileHandle){
 this.product.productImages.push(fileHandler)
     }

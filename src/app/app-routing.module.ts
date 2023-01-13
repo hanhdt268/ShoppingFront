@@ -11,10 +11,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { AdminGuard } from './services/admin.guard';
+import {ProductResolveService} from "./services/product-resolve.service";
 
 const routes: Routes = [
  {
-  path: 'home',
+  path: '',
   component: HomeComponent,
   pathMatch: "full"
  },
@@ -45,7 +46,10 @@ const routes: Routes = [
     },
     {
       path: 'add-product',
-      component: AddProductComponent
+      component: AddProductComponent,
+      resolve: {
+        product: ProductResolveService
+      }
     },
     {
       path: 'product/:pId',
