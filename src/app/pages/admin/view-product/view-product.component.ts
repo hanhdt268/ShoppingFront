@@ -18,7 +18,7 @@ export class ViewProductComponent implements OnInit {
   productDetails: Product[] =[]
   constructor(private _product: ProductService, private _imagesDialog: MatDialog, private _imageProcessing: ImageProcessingService,
     private _route: Router) { }
-  displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Images','Edit','Delete'];
+  displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Actions'];
   ngOnInit(): void {
     // @ts-ignore
     this._product.getAllProduct()

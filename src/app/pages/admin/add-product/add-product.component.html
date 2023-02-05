@@ -49,16 +49,13 @@
             <br>
             <!--          category select-->
             <mat-form-field appearance="fill" class="w100 mt10">
-              <mat-label>Categories</mat-label>
-              <mat-select [(ngModel)]="product.category.cId" name="category">
-                <mat-option *ngFor="let item of categories" [value]="item.cId">
+              <mat-label>Manufacturer</mat-label>
+              <mat-select [(ngModel)]="manufacturers[0].mId" name="manufacturer">
+                <mat-option *ngFor="let item of manufacturers" [value]="item.mId">
                   {{item.title}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
-
-
             <div class="container text-center">
               <button color="primary" *ngIf="isNewProduct" type="submit" mat-raised-button>Add</button>
             </div>
@@ -100,7 +97,7 @@
                   <div class="title">
                     <div style="position: relative">
                       <span class="btn-remove-image" (click)="removeImage(i)">x</span>
-                      <img  [src]="file.url" width="100px" height="100px">
+                      <img  [src]="file?.url" width="100px" height="100px">
                   </div>
                   </div>
                 </div>

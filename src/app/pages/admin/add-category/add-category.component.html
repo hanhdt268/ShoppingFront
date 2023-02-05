@@ -1,6 +1,7 @@
 <mat-card>
-    <h1>Add New Categories</h1>
-  
+  <button mat-raised-button color="primary" class="text-center" [routerLink]="'/admin/add-manufacturer'">Add Manufacturer</button>
+    <h1 class="mt10">Add New Categories</h1>
+
     <mat-card-content>
       <div class="bootstrap-wrapper">
         <div class="row">
@@ -17,7 +18,7 @@
                           placeholder="Enter Category Description" rows="15"
                           type="text"></textarea>
               </mat-form-field>
-  
+
               <div class="container mt15 text-center">
                 <button type="submit" color="primary" mat-raised-button>Add</button>
               </div>

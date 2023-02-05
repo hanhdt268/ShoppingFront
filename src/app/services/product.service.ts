@@ -32,13 +32,23 @@ export class ProductService {
     return this._http.get<Product[]>(`${this.apiBaseUrl}/product/`)
   }
 
-  //delete 
+  //delete
   public deleteProduct(pId: any){
     return this._http.delete(`${this.apiBaseUrl}/product/${pId}`)
   }
 
   //get Product of category
-  public getProductOfCategory(cId: any){
-    return this._http.get(`${this.apiBaseUrl}/product/category/${cId}`)
+  public getProductOfCategory(mId: any){
+    return this._http.get(`${this.apiBaseUrl}/product/manufacturer/${mId}`)
+  }
+
+
+  public getActiveProduct() {
+    return this._http.get(`${this.apiBaseUrl}/product/active`)
+  }
+
+  //get active product of manufacturer
+  public getActiveProductOfManufacturer(mId: any) {
+    return this._http.get(`${this.apiBaseUrl}/product/manufacturer/active/${mId}`)
   }
 }

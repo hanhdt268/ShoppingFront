@@ -1,0 +1,31 @@
+<div class="bootstrap-wrapper">
+  <div class="container mt20">
+    <div class="row">
+      <div class="col-md-6" >
+        <div class="card image-container p-3">
+          <img [src]="product.productImages[selectedProductIndex].url" class="image-zone">
+        </div>
+          <div class="mt-2">
+            <mat-grid-list cols="3" gutterSize="10" rowHeight="1:1">
+              <mat-grid-tile *ngFor="let file of product.productImages;let i = index;" (click)="changeIndex(i)" style="border: 1px solid beige">
+                <img [src]="file.url" class="img-fluid" height="150px" width="150px">
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="product-information">
+          <div class="mt10" >
+            <h3 style="font-size: 30px">{{product.title}}</h3>
+          </div>
+          <div class="a mt10" >
+            <b style="color:red;">{{product.discountPrice}}<b style="text-decoration: underline">đ</b></b> &nbsp;&nbsp;&nbsp; <b style="text-decoration: line-through;color: #aaaaaa">{{product.price}}<b style="text-decoration: underline">đ</b></b>
+          </div>
+          <div class="mt20 text-center">
+            <button mat-raised-button color="warn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

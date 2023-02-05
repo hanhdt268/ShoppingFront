@@ -8,6 +8,7 @@ import { FileHandle } from 'src/app/_model/file-handle.model';
 import { Product } from 'src/app/_model/Product.model';
 import Swal from 'sweetalert2';
 import {ActivatedRoute} from "@angular/router";
+import {ManufacturerService} from "../../../services/manufacturer.service";
 
 @Component({
   selector: 'app-add-product',
@@ -19,7 +20,7 @@ export class AddProductComponent implements OnInit {
 
 
    isNewProduct = true;
-  categories: any = []
+  manufacturers: any = []
 
   product: Product={
     // @ts-ignore
@@ -31,19 +32,20 @@ export class AddProductComponent implements OnInit {
     images: '',
     active: true,
     productImages: [],
-    category: {
-      cId: '',
+    manufacturer: {
+      mId: '',
     }
   }
 
   constructor(private _snack: MatSnackBar, private _category: CategoriesService, private _product: ProductService,
-    private _sanitizer: DomSanitizer, private _activeRoute: ActivatedRoute) { }
+    private _sanitizer: DomSanitizer, private _activeRoute: ActivatedRoute,
+              private _manufacturer: ManufacturerService) { }
 
   ngOnInit(): void {
 
-    this._category.categories().subscribe({
+    this._manufacturer.getManufacturers().subscribe({
       next: (data: any) => {
-        this.categories = data;
+        this.manufacturers = data;
         console.log(data)
       },
       error: (error) => {

@@ -16,15 +16,15 @@
 
   <div class="bootstrap-wrapper">
     <div class="container-fluid mt20">
-      <div class="row">
+      <div class="row" *ngIf="productDetails">
         <div class="col-md-2">
-          <h1>md2</h1>
+          <app-sidebar-user></app-sidebar-user>
         </div>
         <div class="col-md-10">
           <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
             <mat-grid-tile *ngFor="let product of productDetails">
               <div class="row home-page-product-image">
-                <img [src]="product.productImages[0].url" width="200px" height="200px">
+                <img [src]="product.productImages[0].url" style="margin-left: auto;margin-right: auto" width="200px" height="200px">
                 <div class="mt10">
                   <p><b>{{product.title}}</b></p>
                 </div>
@@ -35,7 +35,7 @@
                   <b>{{product.discountPrice}}</b> &nbsp;  <b style="text-decoration: line-through">{{product.price}}</b>
                 </div>
                 <div class="mt30 text-center">
-                  <button mat-raised-button color="primary">View Details</button>
+                  <button mat-raised-button color="primary" (click)="showProductDetails(product.pId)">View Details</button>
                 </div>
               </div>
 

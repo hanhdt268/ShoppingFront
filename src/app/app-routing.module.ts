@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {ActivatedRoute, RouterModule, Routes} from '@angular/router';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
@@ -12,13 +12,32 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { AdminGuard } from './services/admin.guard';
 import {ProductResolveService} from "./services/product-resolve.service";
+import {AddManufacturerComponent} from "./pages/admin/add-manufacturer/add-manufacturer.component";
+import {SidebarUserComponent} from "./pages/user/sidebar-user/sidebar-user.component";
+import {ClientGuard} from "./services/client.guard";
+import {ClientDashbordComponent} from "./pages/user/client-dashbord/client-dashbord.component";
+import {ProductViewDetailsComponent} from "./pages/user/product-view-details/product-view-details.component";
 
 const routes: Routes = [
  {
-  path: '',
-  component: HomeComponent,
-  pathMatch: "full"
+  path: 'client-dashboard',
+  component: ClientDashbordComponent,
+   children: [
+     {
+       path: ':muId',
+       component: HomeComponent
+     },
+
+   ],
+  canActivate: [ClientGuard]
  },
+  {
+    path: 'productViewDetails',
+    component: ProductViewDetailsComponent,
+    resolve: {
+      product: ProductResolveService
+    }
+  },
  {
   path: 'login',
   component: LoginComponent,
@@ -54,6 +73,10 @@ const routes: Routes = [
     {
       path: 'product/:pId',
       component: UpdateProductComponent
+    },
+    {
+      path: 'add-manufacturer',
+      component: AddManufacturerComponent
     }
   ],
   canActivate: [AdminGuard]

@@ -9,7 +9,7 @@ export interface Product{
     images: String,
     active: boolean,
     productImages: FileHandle[]
-    category: {
-        cId: string,
+  manufacturer: {
+        mId: any,
     }
 }
