@@ -17,6 +17,8 @@ import {SidebarUserComponent} from "./pages/user/sidebar-user/sidebar-user.compo
 import {ClientGuard} from "./services/client.guard";
 import {ClientDashbordComponent} from "./pages/user/client-dashbord/client-dashbord.component";
 import {ProductViewDetailsComponent} from "./pages/user/product-view-details/product-view-details.component";
+import {BuyProductComponent} from "./pages/user/buy-product/buy-product.component";
+import {BuyProductResolverServiceService} from "./services/buy-product-resolver-service.service";
 
 const routes: Routes = [
  {
@@ -24,7 +26,7 @@ const routes: Routes = [
   component: ClientDashbordComponent,
    children: [
      {
-       path: ':muId',
+       path: ':mId',
        component: HomeComponent
      },
 
@@ -36,6 +38,13 @@ const routes: Routes = [
     component: ProductViewDetailsComponent,
     resolve: {
       product: ProductResolveService
+    }
+  },
+  {
+    path: 'buyProduct',
+    component: BuyProductComponent,
+    resolve: {
+      productDetails: BuyProductResolverServiceService
     }
   },
  {

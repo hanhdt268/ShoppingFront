@@ -1,0 +1,33 @@
+<div class="container mt20">
+  <div class="card p-3">
+    <div class="row">
+      <div class="col-6">
+        <form #oderForm="ngForm" (ngSubmit)="placeOder(oderForm)">
+          <mat-form-field appearance="fill" class="w100">
+            <mat-label>Full Name</mat-label>
+            <input [(ngModel)]="orderDetails.fullName" matInput name="fullName" placeholder="Enter Here" type="text">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="w100">
+            <mat-label>Full Address</mat-label>
+            <input [(ngModel)]="orderDetails.fullAddress" matInput name="fullAddress" placeholder="Enter Here" type="text">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="w100">
+            <mat-label>contactNumber</mat-label>
+            <input [(ngModel)]="orderDetails.contactNumber" matInput name="contactNumber" placeholder="Enter Here" type="text">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="w100">
+            <mat-label>alternateContact</mat-label>
+            <input [(ngModel)]="orderDetails.alternateContact" matInput name="alternateContact" placeholder="Enter Here" type="text">
+          </mat-form-field>
+
+          <div class="text-center">
+            <button type="submit" mat-stroked-button color="primary">Place Oder</button>
+          </div>
+          </form>
+      </div>
+      <div class="col-6">
+        A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES
+      </div>
+    </div>
+  </div>
+</div>

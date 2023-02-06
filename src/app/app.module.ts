@@ -43,6 +43,7 @@ import { SidebarUserComponent } from './pages/user/sidebar-user/sidebar-user.com
 import { LoadManufacturerComponent } from './pages/user/load-manufacturer/load-manufacturer.component';
 import { ClientDashbordComponent } from './pages/user/client-dashbord/client-dashbord.component';
 import { ProductViewDetailsComponent } from './pages/user/product-view-details/product-view-details.component';
+import { BuyProductComponent } from './pages/user/buy-product/buy-product.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ProductViewDetailsComponent } from './pages/user/product-view-details/p
     LoadManufacturerComponent,
     ClientDashbordComponent,
     ProductViewDetailsComponent,
+    BuyProductComponent,
 
   ],
     imports: [

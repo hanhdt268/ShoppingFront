@@ -24,7 +24,7 @@
           <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
             <mat-grid-tile *ngFor="let product of productDetails">
               <div class="row home-page-product-image">
-                <img [src]="product.productImages[0].url" style="margin-left: auto;margin-right: auto" width="200px" height="200px">
+                <img [src]="product.productImages[0].url" class="img-fluid" style="margin-left: auto;margin-right: auto"  height="200px">
                 <div class="mt10">
                   <p><b>{{product.title}}</b></p>
                 </div>

@@ -4,8 +4,8 @@ export interface Product{
   pId: number
     title: String,
     description: String,
-    price: String,
-    discountPrice: String,
+    price: number,
+    discountPrice: number,
     images: String,
     active: boolean,
     productImages: FileHandle[]

@@ -6,6 +6,7 @@
 .test{
     right: 50px;
     top: 7px;
+  height: 35px;
 }
 
 mat-grid-tile{
