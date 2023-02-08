@@ -5,19 +5,19 @@
         <form #oderForm="ngForm" (ngSubmit)="placeOder(oderForm)">
           <mat-form-field appearance="fill" class="w100">
             <mat-label>Full Name</mat-label>
-            <input [(ngModel)]="orderDetails.fullName" matInput name="fullName" placeholder="Enter Here" type="text">
+            <input [(ngModel)]="orderDetails.fullName" required matInput name="fullName" placeholder="Enter Here" type="text">
           </mat-form-field>
           <mat-form-field appearance="fill" class="w100">
             <mat-label>Full Address</mat-label>
-            <input [(ngModel)]="orderDetails.fullAddress" matInput name="fullAddress" placeholder="Enter Here" type="text">
+            <input [(ngModel)]="orderDetails.fullAddress" required matInput name="fullAddress" placeholder="Enter Here" type="text">
           </mat-form-field>
           <mat-form-field appearance="fill" class="w100">
             <mat-label>contactNumber</mat-label>
-            <input [(ngModel)]="orderDetails.contactNumber" matInput name="contactNumber" placeholder="Enter Here" type="text">
+            <input [(ngModel)]="orderDetails.contactNumber" required matInput name="contactNumber" placeholder="Enter Here" type="text">
           </mat-form-field>
           <mat-form-field appearance="fill" class="w100">
             <mat-label>alternateContact</mat-label>
-            <input [(ngModel)]="orderDetails.alternateContact" matInput name="alternateContact" placeholder="Enter Here" type="text">
+            <input [(ngModel)]="orderDetails.alternateContact" required matInput name="alternateContact" placeholder="Enter Here" type="text">
           </mat-form-field>
 
           <div class="text-center">
@@ -26,7 +26,40 @@
           </form>
       </div>
       <div class="col-6">
-        A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES
+        <table class="table">
+          <thead class="thead">
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody class="tbody">
+              <tr *ngFor="let product of productDetails">
+                <td>{{product.title}}</td>
+                <td>{{product.discountPrice}}</td>
+                <td>
+                  <select
+                    #quantity
+                    (change)="onQuantityChanged(quantity.value, product.pId)"
+                    class="form-select" [ngModel]="getQuantityForProduct(product.pId)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </td>
+                <td>{{getCalculatedProduct(product.pId, product.discountPrice)}}</td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Total</td>
+                <td>{{getCalculatedGrandTotal()}}</td>
+              </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

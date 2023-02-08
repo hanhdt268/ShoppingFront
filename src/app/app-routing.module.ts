@@ -26,7 +26,7 @@ const routes: Routes = [
   component: ClientDashbordComponent,
    children: [
      {
-       path: ':mId',
+       path: '',
        component: HomeComponent
      },
 

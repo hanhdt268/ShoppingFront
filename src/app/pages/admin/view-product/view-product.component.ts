@@ -21,7 +21,7 @@ export class ViewProductComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Actions'];
   ngOnInit(): void {
     // @ts-ignore
-    this._product.getAllProduct()
+    this._product.getAllProduct(0)
     .pipe(
       map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
     )

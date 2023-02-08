@@ -29,8 +29,8 @@ export class ProductService {
   }
 
   //get all
-  public getAllProduct(){
-    return this._http.get<Product[]>(`${this.apiBaseUrl}/product/`)
+  public getAllProduct(pageNumber: any){
+    return this._http.get<Product[]>(`${this.apiBaseUrl}/product/?pageNumber=`+pageNumber)
   }
 
   //delete

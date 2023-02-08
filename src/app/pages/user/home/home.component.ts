@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  pageNumber = 0;
   mId: any;
   productDetails:any = [];
   constructor(private _product: ProductService,
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   public getAllProduct(){
     // @ts-ignore
-    this._product.getAllProduct()
+    this._product.getAllProduct(this.pageNumber)
       .pipe(
         map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
       )
@@ -79,5 +80,15 @@ export class HomeComponent implements OnInit {
   }
   showProductDetails(pId: any){
     this._router.navigate(['productViewDetails',{pId: pId}])
+  }
+
+  public loadMoreProduct() {
+    this.pageNumber = this.pageNumber +1;
+    this.getAllProduct();
+  }
+
+  previous() {
+    this.pageNumber = this.pageNumber -1;
+    this.getAllProduct()
   }
 }
