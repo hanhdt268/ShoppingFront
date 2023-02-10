@@ -29,8 +29,8 @@ export class ProductService {
   }
 
   //get all
-  public getAllProduct(pageNumber: any){
-    return this._http.get<Product[]>(`${this.apiBaseUrl}/product/?pageNumber=`+pageNumber)
+  public getAllProduct(pageNumber: any, searchKey: string = ""){
+    return this._http.get<Product[]>(`${this.apiBaseUrl}/product/?pageNumber=`+pageNumber+"&searchKey="+ searchKey)
   }
 
   //delete
@@ -60,5 +60,15 @@ export class ProductService {
   //create oder
   public placeOder(oderDetails: OderDetails){
    return  this._http.post(`${this.apiBaseUrl}/oder/`, oderDetails)
+  }
+
+  //add to cart
+  public addToCart(pId: any){
+   return this._http.get(`${this.apiBaseUrl}/addToCart/${pId}`)
+  }
+
+  //get all cart
+  public getCartDetails(){
+   return this._http.get(`${this.apiBaseUrl}/addToCart/`)
   }
 }

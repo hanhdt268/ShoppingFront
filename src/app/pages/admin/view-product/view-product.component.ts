@@ -14,27 +14,40 @@ import { ShowProductImagesDialogComponent } from '../show-product-images-dialog/
   styleUrls: ['./view-product.component.css']
 })
 export class ViewProductComponent implements OnInit {
-
+  showLoadMoreProduct = false;
+  showTable = false;
+  pageNumber: number = 0;
   productDetails: Product[] =[]
   constructor(private _product: ProductService, private _imagesDialog: MatDialog, private _imageProcessing: ImageProcessingService,
     private _route: Router) { }
   displayedColumns: string[] = ['Id', 'Product Name', 'Product ActualPrice', 'Product DiscountPrice','Actions'];
   ngOnInit(): void {
+    this.getAllProduct();
+  }
+
+  public getAllProduct(searchKey: string = ""){
+    this.showTable = false;
     // @ts-ignore
-    this._product.getAllProduct(0)
-    .pipe(
-      map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
-    )
-    .subscribe({
-      next: (data: Product[]) => {
-        console.log(data);
-        this.productDetails = data
-      },
-      error: (error) => {
-        console.log(error);
-        Swal.fire('Error', 'Error in loading data', 'error')
-      }
-    })
+    this._product.getAllProduct(this.pageNumber, searchKey)
+      .pipe(
+        map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
+      )
+      .subscribe({
+        next: (data: Product[]) => {
+          console.log(data);
+          data.forEach(product => this.productDetails.push(product))
+          this.showTable = true;
+          if (data.length == 3){
+            this.showLoadMoreProduct = true;
+          }else {
+            this.showLoadMoreProduct = false;
+          }
+        },
+        error: (error) => {
+          console.log(error);
+          Swal.fire('Error', 'Error in loading data', 'error')
+        }
+      })
   }
 
 
@@ -71,5 +84,17 @@ export class ViewProductComponent implements OnInit {
   }
   editProductDetails(pId: any){
       this._route.navigate(['/admin/add-product',{pId: pId}])
+  }
+
+  loadMoreProduct() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAllProduct();
+  }
+
+  searchByKeyword(searchKeyword: any) {
+    console.log(searchKeyword);
+    this.pageNumber =0;
+    this.productDetails = [];
+    this.getAllProduct(searchKeyword);
   }
 }

@@ -2,8 +2,11 @@
     width: 100%;
 }
 .title{
-    border: 2px solid rgb(243, 234, 225);
+    border: 1px solid rgb(243, 234, 225);
 }
+/*.aabc{*/
+/*  --bs-gutter-x: 15.5rem;*/
+/*}*/
 .btn-remove-image{
     position: absolute;
     cursor: pointer;
@@ -11,23 +14,23 @@
     right: -1px;
     background-color: red;
     color: white;
-    border-radius: 50%;
+    border-radius: 10%;
     width: 20px;
     height: auto;
     text-align: center;
 }
-.dropzone{
-    height: 100px;
-    min-width: 100px;
-    display: table;
-    background-color: #eee;
-    width: 300px;
-    border: dashed 1px #aaa;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
+/*.dropzone{*/
+/*    height: 100px;*/
+/*    min-width: 100px;*/
+/*    display: table;*/
+/*    background-color: #eee;*/
+/*    width: 300px;*/
+/*    border: dashed 1px #aaa;*/
+/*    border-radius: 10px;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
 
-}
+/*}*/
 .text-wrapper{
     display: table-cell;
     vertical-align: middle;

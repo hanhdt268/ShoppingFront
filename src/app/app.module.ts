@@ -44,6 +44,7 @@ import { LoadManufacturerComponent } from './pages/user/load-manufacturer/load-m
 import { ClientDashbordComponent } from './pages/user/client-dashbord/client-dashbord.component';
 import { ProductViewDetailsComponent } from './pages/user/product-view-details/product-view-details.component';
 import { BuyProductComponent } from './pages/user/buy-product/buy-product.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { BuyProductComponent } from './pages/user/buy-product/buy-product.compon
     ClientDashbordComponent,
     ProductViewDetailsComponent,
     BuyProductComponent,
+    CartComponent,
 
   ],
     imports: [

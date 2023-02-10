@@ -60,9 +60,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  public getAllProduct(){
+  public getAllProduct(searchKey: string = ""){
     // @ts-ignore
-    this._product.getAllProduct(this.pageNumber)
+    this._product.getAllProduct(this.pageNumber, searchKey)
       .pipe(
         map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
       )
@@ -90,5 +90,12 @@ export class HomeComponent implements OnInit {
   previous() {
     this.pageNumber = this.pageNumber -1;
     this.getAllProduct()
+  }
+
+  searchByKeyword(searchKeyword: any) {
+    console.log(searchKeyword)
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProduct(searchKeyword)
   }
 }

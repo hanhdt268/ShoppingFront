@@ -19,6 +19,7 @@ import {ClientDashbordComponent} from "./pages/user/client-dashbord/client-dashb
 import {ProductViewDetailsComponent} from "./pages/user/product-view-details/product-view-details.component";
 import {BuyProductComponent} from "./pages/user/buy-product/buy-product.component";
 import {BuyProductResolverServiceService} from "./services/buy-product-resolver-service.service";
+import {CartComponent} from "./pages/cart/cart.component";
 
 const routes: Routes = [
  {
@@ -29,7 +30,6 @@ const routes: Routes = [
        path: '',
        component: HomeComponent
      },
-
    ],
   canActivate: [ClientGuard]
  },
@@ -46,6 +46,12 @@ const routes: Routes = [
     resolve: {
       productDetails: BuyProductResolverServiceService
     }
+
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [ClientGuard]
   },
  {
   path: 'login',

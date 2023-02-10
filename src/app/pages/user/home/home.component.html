@@ -3,7 +3,11 @@
     <div class="row text-center ">
       <div class="col-md-6 offset-md-2 ">
             <div class="d-flex form-inputs ">
-              <input class="form-control w100"  type="text" placeholder="Search any product...">
+              <input class="form-control w100"
+                     name="searchKey" id="searchKey"
+                     #searchKeyword
+                     (keyup)="searchByKeyword(searchKeyword.value)"
+                     type="text" placeholder="Search any product...">
               <button mat-list-item class="test" routerLink="/">
                 <mat-icon mat-list-icon>search</mat-icon>
               </button>

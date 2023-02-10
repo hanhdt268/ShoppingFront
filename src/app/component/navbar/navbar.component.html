@@ -4,17 +4,17 @@
       <span class="ml10">Shop ABC</span>
     </a>
     <span class="example-spacer"></span>
-    <a *ngIf="!isLoggedIn" [routerLink]="'/login'" aria-label="Example icon-button with heart icon"
+    <button *ngIf="!isLoggedIn" [routerLink]="'/login'" aria-label="Example icon-button with heart icon"
        class="example-icon favorite-icon mr20 m120"
        mat-icon-button
        routerLinkActive="active">Login
 
-    </a>
-    <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" aria-label="Example icon-button with share icon"
+    </button>
+    <button *ngIf="!isLoggedIn" [routerLink]="'/signup'" aria-label="Example icon-button with share icon"
        class="example-icon mr10"
        mat-icon-button
        routerLinkActive="active">Register
-    </a>
+    </button>
 
 
     <button *ngIf="isLoggedIn && user" aria-label="Example icon-button with share icon" class="example-icon mr20"
@@ -22,6 +22,12 @@
             routerLink="/admin"
             style="margin-right: 50px">{{user.username}}
     </button>
+
+  <mat-action-list>
+    <button *ngIf="isLoggedIn" routerLink="/cart" mat-list-item>
+      <mat-icon mat-list-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-action-list>
     <a (click)="logout()" *ngIf="isLoggedIn" aria-label="Example icon-button with share icon" class="example-icon mr10"
        mat-icon-button>LogOut
     </a>
