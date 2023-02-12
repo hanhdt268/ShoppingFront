@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ManufacturerService} from "../../../services/manufacturer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {CategoriesService} from "../../../services/categories.service";
 
 @Component({
   selector: 'app-sidebar-user',
@@ -9,13 +9,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class SidebarUserComponent implements OnInit {
 
-  manufacturers: any;
-  constructor(private _manufacturer: ManufacturerService, private _snack: MatSnackBar) { }
+  categories: any;
+  constructor(private _category: CategoriesService, private _snack: MatSnackBar) { }
 
   ngOnInit(): void {
-    this._manufacturer.getManufacturers().subscribe({
+    this._category.categories().subscribe({
       next: (data: any)=> {
-        this.manufacturers =data
+        this.categories =data
       },
       error: (error)=>{
         this._snack.open('Error loading database','',{

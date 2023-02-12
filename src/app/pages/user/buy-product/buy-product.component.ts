@@ -22,14 +22,18 @@ export class BuyProductComponent implements OnInit {
     alternateContact: '',
     oderProductQuantityList: []
   }
+  isCartCheckout: string | null = '';
   constructor(private _activeRoute: ActivatedRoute,
               private _productService: ProductService,
               private _router: Router,
               private _snack: MatSnackBar) { }
 
+
+
   ngOnInit(): void {
     this.productDetails = this._activeRoute.snapshot.data['productDetails'];
 
+    this.isCartCheckout = this._activeRoute.snapshot.paramMap.get('isSingleProductCheckOut')
     this.productDetails.forEach(
       x => this.orderDetails.oderProductQuantityList.push(
         {pId: x.pId, quantity: 1}
@@ -81,7 +85,7 @@ export class BuyProductComponent implements OnInit {
       // }
     }).then((result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
-        this._productService.placeOder(this.orderDetails).subscribe({
+        this._productService.placeOder(this.orderDetails, this.isCartCheckout).subscribe({
           next: (data)=>{
             oderForm.reset();
             this._router.navigate(['client-dashboard'])
@@ -94,7 +98,7 @@ export class BuyProductComponent implements OnInit {
     })
   }
 
-  getQuantityForProduct(pId: number) {
+  getQuantityForProduct(pId: any) {
     const filterProduct = this.orderDetails.oderProductQuantityList.filter(
       (productQuantity) => productQuantity.pId === pId
     )
@@ -103,7 +107,7 @@ export class BuyProductComponent implements OnInit {
 
   getCalculatedProduct(pId: number, discountPrice: number) {
      const  filterProduct =this.orderDetails.oderProductQuantityList.filter(
-      (productQuantity) => productQuantity.pId = pId
+      (productQuantity) => productQuantity.pId === pId
     )
     return  filterProduct[0].quantity * discountPrice
   }

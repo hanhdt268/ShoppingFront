@@ -50,8 +50,8 @@
             <!--          category select-->
             <mat-form-field appearance="fill" class="w100 mt10">
               <mat-label>Manufacturer</mat-label>
-              <mat-select [(ngModel)]="manufacturers[0].mId" name="manufacturer">
-                <mat-option *ngFor="let item of manufacturers" [value]="item.mId">
+              <mat-select [(ngModel)]="product.category.cId" name="category">
+                <mat-option *ngFor="let item of categories" [value]="item.cId">
                   {{item.title}}
                 </mat-option>
               </mat-select>
@@ -84,7 +84,7 @@
           </div>
           <br>
           <div class="mt10">
-            <div class="row aabc">
+            <div class="row">
                <!-- <mat-grid-list *ngFor="let file of product.productImages" cols="4" rowHeight="1:1">
                 <mat-grid-tile >
                   <div style="position: relative">

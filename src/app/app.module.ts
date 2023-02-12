@@ -38,7 +38,6 @@ import { DragDirective } from './drag.directive';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShowProductImagesDialogComponent } from './pages/admin/show-product-images-dialog/show-product-images-dialog.component';
-import { AddManufacturerComponent } from './pages/admin/add-manufacturer/add-manufacturer.component';
 import { SidebarUserComponent } from './pages/user/sidebar-user/sidebar-user.component';
 import { LoadManufacturerComponent } from './pages/user/load-manufacturer/load-manufacturer.component';
 import { ClientDashbordComponent } from './pages/user/client-dashbord/client-dashbord.component';
@@ -66,7 +65,6 @@ import { CartComponent } from './pages/cart/cart.component';
     UpdateProductComponent,
     DragDirective,
     ShowProductImagesDialogComponent,
-    AddManufacturerComponent,
     SidebarUserComponent,
     LoadManufacturerComponent,
     ClientDashbordComponent,

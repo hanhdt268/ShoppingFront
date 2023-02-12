@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../../../_model/Product.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-product-view-details',
@@ -35,6 +36,8 @@ export class ProductViewDetailsComponent implements OnInit {
     console.log(pId)
     this._productService.addToCart(pId).subscribe({
       next: (response: any)=>{
+        Swal.fire('Add To Cart Success','','success')
+        this._router.navigate(['cart'])
         console.log(response)
       },
       error: (error)=>{

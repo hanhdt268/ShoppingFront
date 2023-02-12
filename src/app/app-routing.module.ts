@@ -12,8 +12,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { AdminGuard } from './services/admin.guard';
 import {ProductResolveService} from "./services/product-resolve.service";
-import {AddManufacturerComponent} from "./pages/admin/add-manufacturer/add-manufacturer.component";
-import {SidebarUserComponent} from "./pages/user/sidebar-user/sidebar-user.component";
+// import {SidebarUserComponent} from "./pages/user/sidebar-user/sidebar-user.component";
 import {ClientGuard} from "./services/client.guard";
 import {ClientDashbordComponent} from "./pages/user/client-dashbord/client-dashbord.component";
 import {ProductViewDetailsComponent} from "./pages/user/product-view-details/product-view-details.component";
@@ -89,10 +88,7 @@ const routes: Routes = [
       path: 'product/:pId',
       component: UpdateProductComponent
     },
-    {
-      path: 'add-manufacturer',
-      component: AddManufacturerComponent
-    }
+
   ],
   canActivate: [AdminGuard]
  },

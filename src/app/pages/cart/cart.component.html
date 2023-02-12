@@ -1,4 +1,6 @@
 <div class="container mt10">
+
+
   <table mat-table [dataSource]="cartDetails" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -24,4 +26,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <div align="right" class="mt10">
+    <button (click)="handleCheckout()" mat-raised-button color="primary">Checkout</button>
+  </div>
 </div>

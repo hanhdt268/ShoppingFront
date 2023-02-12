@@ -9,7 +9,7 @@
       <mat-icon mat-list-icon>account_circle</mat-icon>
       Profile
     </button>
-    <button *ngFor="let item of manufacturers" [routerLink]="'/client-dashboard/'+ item.mId" mat-list-item>
+    <button *ngFor="let item of categories" [routerLink]="'/client-dashboard/'+ item.cId" mat-list-item>
       <mat-icon mat-list-icon>account_circle</mat-icon>
       {{item.title}}
     </button>

@@ -49,8 +49,8 @@ export class ProductService {
   }
 
   //get active product of manufacturer
-  public getActiveProductOfManufacturer(mId: any) {
-    return this._http.get(`${this.apiBaseUrl}/product/manufacturer/active/${mId}`)
+  public getActiveProductOfManufacturer(cId: any) {
+    return this._http.get(`${this.apiBaseUrl}/product/category/active/${cId}`)
   }
 
   public getProductDetails(isSingleProductCheckOut: any, pId: any){
@@ -58,8 +58,8 @@ export class ProductService {
   }
 
   //create oder
-  public placeOder(oderDetails: OderDetails){
-   return  this._http.post(`${this.apiBaseUrl}/oder/`, oderDetails)
+  public placeOder(oderDetails: OderDetails, isCartCheckout: any){
+   return  this._http.post(`${this.apiBaseUrl}/oder/${isCartCheckout}`, oderDetails)
   }
 
   //add to cart
