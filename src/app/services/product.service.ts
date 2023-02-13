@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Product } from '../_model/Product.model';
 import {OderDetails} from "../_model/oder-details.model";
+import {MyOrderDetails} from "../_model/order.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +72,30 @@ export class ProductService {
   //get all cart
   public getCartDetails(){
    return this._http.get(`${this.apiBaseUrl}/addToCart/`)
+  }
+
+  //delete cart by id
+  public deleteCartById(cartId: any){
+   return this._http.delete(`${this.apiBaseUrl}/addToCart/${cartId}`)
+  }
+
+
+  //get orderDetails by user
+  public getOderDetails(): Observable<MyOrderDetails[]>{
+   return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/`)
+  }
+
+  //get all order
+  public getAllOderDetails(): Observable<MyOrderDetails[]>{
+    return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/getAllOrderDetails`)
+  }
+
+  //get delivery
+  public markOrderAsDelivered(oder: any){
+   return this._http.get(`${this.apiBaseUrl}/oder/markOrderAsDelivered/${oder}`)
+  }
+
+  public markOrderAsDestroy(oder: any){
+    return this._http.get(`${this.apiBaseUrl}/oder/cancelOder/${oder}`)
   }
 }

@@ -44,6 +44,8 @@ import { ClientDashbordComponent } from './pages/user/client-dashbord/client-das
 import { ProductViewDetailsComponent } from './pages/user/product-view-details/product-view-details.component';
 import { BuyProductComponent } from './pages/user/buy-product/buy-product.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { MyOrdersComponent } from './pages/user/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './pages/admin/order-details/order-details.component';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ProductViewDetailsComponent,
     BuyProductComponent,
     CartComponent,
+    MyOrdersComponent,
+    OrderDetailsComponent,
 
   ],
     imports: [

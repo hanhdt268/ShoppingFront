@@ -19,6 +19,8 @@ import {ProductViewDetailsComponent} from "./pages/user/product-view-details/pro
 import {BuyProductComponent} from "./pages/user/buy-product/buy-product.component";
 import {BuyProductResolverServiceService} from "./services/buy-product-resolver-service.service";
 import {CartComponent} from "./pages/cart/cart.component";
+import {MyOrdersComponent} from "./pages/user/my-orders/my-orders.component";
+import {OrderDetailsComponent} from "./pages/admin/order-details/order-details.component";
 
 const routes: Routes = [
  {
@@ -52,6 +54,11 @@ const routes: Routes = [
     component: CartComponent,
     canActivate: [ClientGuard]
   },
+  {
+    path: 'myOrders',
+    component: MyOrdersComponent,
+    canActivate: [ClientGuard]
+  },
  {
   path: 'login',
   component: LoginComponent,
@@ -64,6 +71,10 @@ const routes: Routes = [
     {
       path: 'categories',
       component: ViewCategoriesComponent
+    },
+    {
+      path: 'orderDetails',
+      component: OrderDetailsComponent
     },
     {
       path: 'add-category',

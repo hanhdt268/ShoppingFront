@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <a aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button routerLink="/">
+    <a aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button routerLink="/client-dashboard">
       <mat-icon>shop</mat-icon>
       <span class="ml10">Shop ABC</span>
     </a>
@@ -19,7 +19,7 @@
 
     <button *ngIf="isLoggedIn && user" aria-label="Example icon-button with share icon" class="example-icon mr20"
             mat-icon-button
-            routerLink="/admin"
+            routerLink="/myOrders"
             style="margin-right: 50px">{{user.username}}
     </button>
 

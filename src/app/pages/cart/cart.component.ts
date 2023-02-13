@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  displayedColumns: string[] = ['Image', 'Name', 'Price', 'DiscountPrice'];
+  displayedColumns: string[] = ['Image', 'Name', 'Price', 'DiscountPrice','Action'];
   constructor(private _productService: ProductService, private _router:Router) { }
 
   cartDetails: any[] = []
@@ -42,4 +43,26 @@ export class CartComponent implements OnInit {
     //   }
     // })
   }
+
+  delete(cartId: any) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure delete ?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._productService.deleteCartById(cartId).subscribe({
+          next: (response)=>{
+            console.log(response)
+            this.getCartDetails();
+          },error:(error)=>{
+            console.log(error)
+          }
+        })
+      }
+
+    })
+  }
+
 }
