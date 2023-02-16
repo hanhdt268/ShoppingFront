@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
+
+  isAdmin =false;
   user: any = null;
   constructor(public _login: LoginService, private _router: Router) { }
 
@@ -24,6 +26,13 @@ export class NavbarComponent implements OnInit {
     this._login.logOut();
 
     window.location.reload();
+  }
+
+  // @ts-ignore
+  public isAmin(){
+    if (this._login.getUserRole()== "Client"){
+      return true;
+    }
   }
 
 

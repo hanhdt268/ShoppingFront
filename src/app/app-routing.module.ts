@@ -26,13 +26,13 @@ const routes: Routes = [
  {
   path: 'client-dashboard',
   component: ClientDashbordComponent,
+   canActivate: [ClientGuard],
    children: [
      {
-       path: '',
+       path: ':cId',
        component: HomeComponent
      },
    ],
-  canActivate: [ClientGuard]
  },
   {
     path: 'productViewDetails',

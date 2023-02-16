@@ -29,8 +29,8 @@
     <ng-container matColumnDef="Action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-      <button mat-raised-button (click)="markOrderAsDelivered(element.oderId)" color="primary">Delivered</button> &nbsp;
-      <button mat-raised-button (click)="markOrderAsDestroy(element.oderId)" color="warn">Cancel</button>
+      <button *ngIf="element.oderStatus == 'Placed'" mat-raised-button (click)="markOrderAsDelivered(element.oderId)" color="primary">Delivered</button> &nbsp;
+      <button *ngIf="element.oderStatus == 'Placed'" mat-raised-button (click)="markOrderAsDestroy(element.oderId)" color="warn">Cancel</button>
       </td>
 
     </ng-container>

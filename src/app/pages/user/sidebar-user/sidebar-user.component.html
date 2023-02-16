@@ -1,7 +1,7 @@
 <mat-card>
   <mat-action-list>
     <div matSubheader>Available Categories</div>
-    <button mat-list-item routerLink="/client-dashboard">
+    <button mat-list-item routerLink="/client-dashboard/0">
       <mat-icon mat-list-icon>home</mat-icon>
       All Product
     </button>
@@ -9,9 +9,12 @@
       <mat-icon mat-list-icon>account_circle</mat-icon>
       Profile
     </button>
-    <button *ngFor="let item of categories" [routerLink]="'/client-dashboard/'+ item.cId" mat-list-item>
+    <button *ngFor="let item of category" [routerLink]="'/client-dashboard/'+item.cId" mat-list-item>
       <mat-icon mat-list-icon>account_circle</mat-icon>
       {{item.title}}
     </button>
   </mat-action-list>
 </mat-card>
+
+
+

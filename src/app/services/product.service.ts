@@ -41,13 +41,13 @@ export class ProductService {
   }
 
   //get Product of category
-  public getProductOfCategory(mId: any){
-    return this._http.get(`${this.apiBaseUrl}/product/manufacturer/${mId}`)
+  public getProductOfCategory(cId: any,pageNumber: any, searchKey: string = "",){
+    return this._http.get(`${this.apiBaseUrl}/product/category/active/${cId}`+"?pageNumber"+pageNumber+"&searchKey"+searchKey)
   }
 
 
-  public getActiveProduct() {
-    return this._http.get(`${this.apiBaseUrl}/product/active`)
+  public getActiveProduct(pageNumber: any, searchKey: string = "") {
+    return this._http.get(`${this.apiBaseUrl}/product/active/?pageNumber=`+pageNumber+"&searchKey="+ searchKey)
   }
 
   //get active product of manufacturer

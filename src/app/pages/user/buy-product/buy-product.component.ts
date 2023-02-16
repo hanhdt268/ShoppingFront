@@ -32,7 +32,7 @@ export class BuyProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productDetails = this._activeRoute.snapshot.data['productDetails'];
-
+    console.log(this.productDetails)
     this.isCartCheckout = this._activeRoute.snapshot.paramMap.get('isSingleProductCheckOut')
     this.productDetails.forEach(
       x => this.orderDetails.oderProductQuantityList.push(

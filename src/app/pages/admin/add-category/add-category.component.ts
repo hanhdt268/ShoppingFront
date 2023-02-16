@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 export class AddCategoryComponent implements OnInit {
 
   category: Category = {
+    // @ts-ignore
+    cId: null,
     title: '',
     description: ''
   }

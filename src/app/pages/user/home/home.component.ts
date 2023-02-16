@@ -5,6 +5,7 @@ import {Product} from "../../../_model/Product.model";
 import Swal from "sweetalert2";
 import {ImageProcessingService} from "../../../services/image-processing.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Category} from "../../../_model/category.model";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   pageNumber = 0;
-  mId: any;
+  cId:any;
   productDetails:any = [];
   constructor(private _product: ProductService,
               private _imageProcessing: ImageProcessingService,
@@ -21,7 +22,19 @@ export class HomeComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit(): void {
-    this.getAllProduct();
+
+    this._route.params.subscribe((params)=>{
+      // @ts-ignore
+      this.cId = params.cId;
+      if (this.cId ==0){
+        console.log("Load all product")
+        this.getAllProduct();
+      }else {
+        console.log("load specific product")
+        this.getProductByCategory();
+      }
+    })
+
 
 
   // this._route.params.subscribe((params)=>{
@@ -62,8 +75,28 @@ export class HomeComponent implements OnInit {
 
   public getAllProduct(searchKey: string = ""){
     // @ts-ignore
-    this._product.getAllProduct(this.pageNumber, searchKey)
+    this._product.getActiveProduct(this.pageNumber, searchKey)
       .pipe(
+        // @ts-ignore
+        map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
+      )
+      .subscribe({
+        next: (data: Product[]) => {
+          console.log(data);
+          // @ts-ignore
+          this.productDetails = data
+        },
+        error: (error) => {
+          console.log(error);
+          Swal.fire('Error', 'Error in loading data', 'error')
+        }
+      })
+  }
+  public getProductByCategory(searchKey: string = ""){
+    // @ts-ignore
+    this._product.getProductOfCategory(this.cId, this.pageNumber, searchKey)
+      .pipe(
+        // @ts-ignore
         map((x: Product[], i)=> x.map((product: Product)=>this._imageProcessing.createImages(product)))
       )
       .subscribe({
@@ -85,11 +118,14 @@ export class HomeComponent implements OnInit {
   public loadMoreProduct() {
     this.pageNumber = this.pageNumber +1;
     this.getAllProduct();
+    this.getProductByCategory();
   }
 
   previous() {
     this.pageNumber = this.pageNumber -1;
     this.getAllProduct()
+    this.getProductByCategory();
+
   }
 
   searchByKeyword(searchKeyword: any) {
@@ -97,5 +133,6 @@ export class HomeComponent implements OnInit {
     this.pageNumber = 0;
     this.productDetails = [];
     this.getAllProduct(searchKeyword)
+    this.getProductByCategory(searchKeyword)
   }
 }

@@ -9,13 +9,13 @@ import {CategoriesService} from "../../../services/categories.service";
 })
 export class SidebarUserComponent implements OnInit {
 
-  categories: any;
+  category: any;
   constructor(private _category: CategoriesService, private _snack: MatSnackBar) { }
 
   ngOnInit(): void {
     this._category.categories().subscribe({
       next: (data: any)=> {
-        this.categories =data
+        this.category =data
       },
       error: (error)=>{
         this._snack.open('Error loading database','',{

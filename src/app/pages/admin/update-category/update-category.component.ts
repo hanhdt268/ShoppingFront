@@ -18,7 +18,7 @@ cId: any;
   ngOnInit(): void {
     // @ts-ignore
     this.cId = this._route.snapshot.params.cId;
-    
+    console.log(this.cId)
     this._category.getCategories(this.cId).subscribe({
       next: (data: any)=>{
         this.category = data
@@ -40,7 +40,7 @@ cId: any;
       },
       error:(error:any)=>{
         console.log(error);
-  
+
       }
     })
   }

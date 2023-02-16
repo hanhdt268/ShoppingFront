@@ -21,10 +21,10 @@
   <div class="bootstrap-wrapper">
     <div class="container-fluid mt20">
       <div class="row" *ngIf="productDetails">
-        <div class="col-md-2">
-          <app-sidebar-user></app-sidebar-user>
-        </div>
-        <div class="col-md-10">
+<!--        <div class="col-md-2">-->
+<!--          <app-sidebar-user></app-sidebar-user>-->
+<!--        </div>-->
+        <div class="col-md-12">
           <mat-grid-list cols="4" rowHeight="2:3" gutterSize="10">
             <mat-grid-tile *ngFor="let product of productDetails">
               <div class="row home-page-product-image">
@@ -72,6 +72,10 @@
     </div>
   </div>
 
+
+<!--<footer>-->
+<!--  <app-footer></app-footer>-->
+<!--</footer>-->
 
 
 
