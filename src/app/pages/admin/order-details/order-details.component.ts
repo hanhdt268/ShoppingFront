@@ -9,16 +9,17 @@ import {MyOrderDetails} from "../../../_model/order.model";
 })
 export class OrderDetailsComponent implements OnInit {
   dataSource: MyOrderDetails[] =[]
+  status = "All"
   constructor(private _productService: ProductService) { }
 
   displayedColumns = ['Id', 'ProductName', 'Name','Address', 'Contact', 'Status']
   ngOnInit(): void {
-    this.getAllOrderDetails()
+    this.getAllOrderDetails(this.status);
   }
 
 
-  public getAllOrderDetails(){
-    this._productService.getAllOderDetails().subscribe({
+  public getAllOrderDetails(statusParameter: any){
+    this._productService.getAllOderDetails(statusParameter).subscribe({
       next: (resp)=>{
         console.log(resp);
         this.dataSource = resp

@@ -1,12 +1,12 @@
 .w100{
     width: 70%;
-    height: 50px;
+
 }
 
 .test{
-    right: 50px;
-    top: 7px;
-  height: 35px;
+    right: 65px;
+    top: 2px;
+  height: 30px;
 }
 
 mat-grid-tile{

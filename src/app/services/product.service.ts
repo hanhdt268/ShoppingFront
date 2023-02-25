@@ -81,13 +81,13 @@ export class ProductService {
 
 
   //get orderDetails by user
-  public getOderDetails(): Observable<MyOrderDetails[]>{
-   return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/`)
+  public getOderDetails(status: any): Observable<MyOrderDetails[]>{
+   return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/${status}`)
   }
 
   //get all order
-  public getAllOderDetails(): Observable<MyOrderDetails[]>{
-    return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/getAllOrderDetails`)
+  public getAllOderDetails(status: any): Observable<MyOrderDetails[]>{
+    return this._http.get<MyOrderDetails[]>(`${this.apiBaseUrl}/oder/getAllOrderDetails/${status}`)
   }
 
   //get delivery

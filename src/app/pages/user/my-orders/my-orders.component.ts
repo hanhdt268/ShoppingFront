@@ -11,15 +11,16 @@ import {MyOrderDetails} from "../../../_model/order.model";
 export class MyOrdersComponent implements OnInit {
 
   myOrderDetails: MyOrderDetails[] = []
+  status: any = "All"
   constructor(private _productService: ProductService) { }
   displayedColumns = ['Name', 'Address', 'ContactNumber','Amount', 'Status','Action'];
   ngOnInit(): void {
-    this.getOderDetails();
+    this.getOderDetails(this.status);
   }
 
 
-  public getOderDetails(){
-    this._productService.getOderDetails().subscribe({
+  public getOderDetails(statusParameter: any){
+    this._productService.getOderDetails(statusParameter).subscribe({
       next: (response: MyOrderDetails[])=>{
         console.log(response)
         this.myOrderDetails = response;
@@ -33,7 +34,7 @@ export class MyOrdersComponent implements OnInit {
     this._productService.markOrderAsDelivered(oderId).subscribe({
       next: (resp:any)=>{
         console.log(resp)
-        this.getOderDetails()
+        this.getOderDetails(this.status)
       },
       error:(error) => {
         console.log(error)
@@ -45,7 +46,7 @@ export class MyOrdersComponent implements OnInit {
     this._productService.markOrderAsDestroy(oderId).subscribe({
       next: (resp:any)=>{
         console.log(resp)
-        this.getOderDetails()
+        this.getOderDetails(this.status)
       },
       error:(error) => {
         console.log(error)

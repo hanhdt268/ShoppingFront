@@ -67,7 +67,7 @@ export class AddProductComponent implements OnInit {
     }
     this._product.addProduct(productFormData).subscribe({
       next: (data: Product) => {
-        Swal.fire('Successfully', 'Add Quiz Successfully', "success")
+        Swal.fire('Successfully', 'Add Product Successfully', "success")
         this.product.productImages = []
         productForm.reset();
       },

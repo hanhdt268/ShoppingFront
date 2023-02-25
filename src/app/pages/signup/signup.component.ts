@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-signup',
@@ -19,9 +20,19 @@ export class SignupComponent implements OnInit {
     phone: '',
 
   }
-  constructor(private userService: UserService, private _snack: MatSnackBar, private _router: Router) { }
+  // @ts-ignore
+  form: FormGroup;
+  constructor(private _fb:FormBuilder,private userService: UserService, private _snack: MatSnackBar, private _router: Router) { }
 
   ngOnInit(): void {
+    this.form = this._fb.group({
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required]),
+      fullName: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required,Validators.email]),
+      address: new FormControl("", [Validators.required]),
+      phone: new FormControl("", [Validators.required, Validators.maxLength(10),Validators.pattern('^[0-9]+$')]),
+    })
   }
   formSubmit() {
     if (this.user.username == '' || this.user.username == null) {
@@ -30,40 +41,19 @@ export class SignupComponent implements OnInit {
       });
       return;
     }
-    
-    Swal.fire({
-      title: 'Successfully',
-      icon: "success",
-      timer: 1000,
-      // didOpen: () => {
-      //   // @ts-ignore
-      //   Swal.showLoading()
-      //   // @ts-ignore
-      //   const b = Swal.getHtmlContainer().querySelector('b')
-      //   timerInterval = setInterval(() => {
-      //     // @ts-ignore
-      //     b.textContent = Swal.getTimerLeft()
-      //   }, 100)
-      // },
-      // willClose: () => {
-      //   clearInterval(timerInterval)
-      // }
-    }).then((result) => {
-      if (result.dismiss === Swal.DismissReason.timer) {
-        this.userService.addUser(this.user).subscribe({
-          next: (data: any) => {
-            this._router.navigate(['login'])
-          },
-          error: (error: any) => {
-            this._snack.open('user already exists !!', '', {
-              duration: 3000
-            });
-    
-          },
-          complete: () => console.log("the end")
-        })
-        
-      }
+
+    this.userService.addUser(this.user).subscribe({
+      next: (data: any) => {
+        this._router.navigate(['login'])
+        Swal.fire('Sign Up Successfully', '', 'success')
+      },
+      error: (error: any) => {
+        this._snack.open('user already exists !!', '', {
+          duration: 3000
+        });
+
+      },
+      complete: () => console.log("the end")
     })
   }
 }

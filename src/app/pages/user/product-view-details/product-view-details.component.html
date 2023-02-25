@@ -19,7 +19,7 @@
             <h3 style="font-size: 30px">{{product.title}}</h3>
           </div>
           <div class="a mt10" >
-            <b style="color:red;">{{product.discountPrice}}<b style="text-decoration: underline">đ</b></b> &nbsp;&nbsp;&nbsp; <b style="text-decoration: line-through;color: #aaaaaa">{{product.price}}<b style="text-decoration: underline">đ</b></b>
+            <b style="color:red;">{{product.discountPrice | currency: 'VND'}}<b style="text-decoration: underline">đ</b></b> &nbsp;&nbsp;&nbsp; <b style="text-decoration: line-through;color: #aaaaaa">{{product.price | currency: 'VND'}}<b style="text-decoration: underline">đ</b></b>
           </div>
           <div class="mt20 text-center">
             <button mat-raised-button color="warn" (click)="buyProduct(product.pId)">Buy Now</button>

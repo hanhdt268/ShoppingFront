@@ -1,12 +1,12 @@
 <div class="bootstrap-wrapper">
-    <div class="container-register100" style="background-image: url('assets/544750.jpg')">
+    <div class="container-register100 img-fluid" >
       <div class="row" style="margin-top: 20px">
         <div class="wrap-login100 col-md-6 offset-md-3">
-          <h1 class="login100-form-title mt20 p-b-53" style="text-align: center">Sign Up</h1>
-  
+          <h1 class="login100-form-title mt20 p-b-53" style="text-align: center">Sign In</h1>
+
           <!--        {{user | json}}-->
-          <form (ngSubmit)="formSubmit()" class="login100-form">
-  
+          <form [formGroup]="form" (ngSubmit)="formSubmit()" class="login100-form">
+
             <!--          Username field-->
             <div class="social">
               <a class="btn-face m-b-20 mb10 " href="#">
@@ -19,31 +19,67 @@
               </a>
             </div>
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Username</mat-label>
-              <input [(ngModel)]="loginData.username" class="input100" matInput name="username" placeholder="Enter Here"
+              <mat-label style="color: white">Username</mat-label>
+              <input [(ngModel)]="loginData.username" class="input100" matInput formControlName="username" placeholder="Enter Here"
                      required>
               <span class="focus-input100"></span>
-              <mat-hint>Valid UserName !!</mat-hint>
+
+              <mat-hint *ngIf="(form.controls['username'].dirty || form.controls['username'].touched) && form.hasError('required', 'username')" class="text-danger">UserName is required !!</mat-hint>
             </mat-form-field>
-  
+
             <!--          Password field-->
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Password</mat-label>
-              <input [(ngModel)]="loginData.password" matInput name="password" placeholder="Enter Here" required
+              <mat-label style="color: white">Password</mat-label>
+              <input style="color: white" [(ngModel)]="loginData.password" matInput formControlName="password" placeholder="Enter Here" required
                      type="password">
               <span class="focus-input100"></span>
+              <mat-hint *ngIf="(form.controls['password'].dirty ||form.controls['username'].touched) && form.hasError('required', 'password')" class="text-danger">Password is required !!</mat-hint>
             </mat-form-field>
-  
-            <div class="container text-center">
-              <button class="full-width" color="primary" mat-raised-button style="margin-bottom: 10px" type="submit">Sign
-                Up
+
+            <div class="container">
+              <a routerLink="/signup">Sign Up?</a>
+            </div>
+            <div class="container text-center" style="padding: 30px">
+              <button [disabled]="form.invalid" class="full" color="primary" mat-raised-button style="margin-bottom: 10px" type="submit">Sign
+                In
               </button>
-  
+
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  
-  
+
+<!--<section class="img-fluid">-->
+<!--  <div class="form-box">-->
+<!--    <div class="form-value">-->
+<!--      <form [formGroup]="form" (ngSubmit)="formSubmit()">-->
+<!--        <h2>Login</h2>-->
+<!--        <div class="inputbox" >-->
+<!--&lt;!&ndash;          <mat-icon mat-list-icon>shopping_cart</mat-icon>&ndash;&gt;-->
+<!--          <input  [(ngModel)]="loginData.username" formControlName="username" type="text" required>-->
+<!--          <label > Email</label>-->
+<!--        </div>-->
+<!--        <div class="inputbox" >-->
+
+<!--          <input [(ngModel)]="loginData.password" formControlName="password" type="password" required>-->
+<!--          <label >Password</label>-->
+<!--          <div class="mt20">-->
+<!--            <small  *ngIf="(form.controls['password'].dirty ||form.controls['username'].touched) && form.hasError('required', 'password')" class="text-danger">Password is required</small>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="forget">-->
+<!--          <label for=""><input type="checkbox">Remember Me  <a>Forget Password</a></label>-->
+
+<!--        </div>-->
+<!--        <button type="submit">Log in</button>-->
+<!--        <div class="register">-->
+<!--          <p>Don't have a account <a routerLink="/signup">Register</a></p>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+

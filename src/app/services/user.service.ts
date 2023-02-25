@@ -13,7 +13,7 @@ export class UserService {
 
    //update user
   public updateUser(user: any): Observable<any> {
-    return this._http.put(`${this.apiBaseUrl}/user/update`, user)
+    return this._http.put(`${this.apiBaseUrl}/user/`, user)
   }
 
   //add user

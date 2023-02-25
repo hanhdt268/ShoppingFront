@@ -1,5 +1,11 @@
 <div class="container-fluid mt20">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-button-toggle-group  aria-label="Font Style">
+    <mat-button-toggle  value="All" (click)="getAllOrderDetails('All')">All</mat-button-toggle>
+    <mat-button-toggle value="Placed" (click)="getAllOrderDetails('Placed')">Placed</mat-button-toggle>
+    <mat-button-toggle value="Delivered" (click)="getAllOrderDetails('Delivered')">Delivered</mat-button-toggle>
+    <mat-button-toggle value="Cancel" (click)="getAllOrderDetails('Cancel')">Cancel</mat-button-toggle>
+  </mat-button-toggle-group>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt10">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,15 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   }
-  constructor(private snack: MatSnackBar, private _login: LoginService, private _router: Router) { }
+  // @ts-ignore
+  form: FormGroup;
+  constructor(private _fb: FormBuilder,private snack: MatSnackBar, private _login: LoginService, private _router: Router) { }
 
   ngOnInit(): void {
+    this.form = this._fb.group({
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required])
+    })
   }
 
   formSubmit() {
@@ -40,7 +47,6 @@ export class LoginComponent implements OnInit {
         console.log(data)
         //login...
         this._login.loginUser(data.token);
-        let timerInterval: string | number | NodeJS.Timer | undefined
         Swal.fire({
           title: 'Successfully',
           icon: "success",
@@ -70,7 +76,7 @@ export class LoginComponent implements OnInit {
                   this._router.navigate(['admin']);
                   this._login.loginStatusSubject.next(true);
                 } else if (this._login.getUserRole() == 'Client') {
-                  this._router.navigate(['client-dashboard']);
+                  this._router.navigate(['client-dashboard/0']);
                   this._login.loginStatusSubject.next(true);
                 } else {
                   this._login.logOut();

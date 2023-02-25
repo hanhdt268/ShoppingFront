@@ -22,7 +22,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/user/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { authInterceptorProvides } from './services/auth.interceptor';
 import { SignupComponent } from './pages/signup/signup.component';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
@@ -46,6 +46,9 @@ import { BuyProductComponent } from './pages/user/buy-product/buy-product.compon
 import { CartComponent } from './pages/cart/cart.component';
 import { MyOrdersComponent } from './pages/user/my-orders/my-orders.component';
 import { OrderDetailsComponent } from './pages/admin/order-details/order-details.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { UpdateProfileComponent } from './pages/update-profile/update-profile.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -75,6 +78,8 @@ import { OrderDetailsComponent } from './pages/admin/order-details/order-details
     CartComponent,
     MyOrdersComponent,
     OrderDetailsComponent,
+    ProfileComponent,
+    UpdateProfileComponent,
 
   ],
     imports: [
@@ -97,7 +102,9 @@ import { OrderDetailsComponent } from './pages/admin/order-details/order-details
         FormsModule,
         MatGridListModule,
         MatTableModule,
-        MatDialogModule
+        MatDialogModule,
+        ReactiveFormsModule,
+      MatButtonToggleModule
     ],
   providers: [authInterceptorProvides],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-    <a aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button routerLink="/client-dashboard/0">
-      <mat-icon>shop</mat-icon>
+    <button aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button routerLink="/client-dashboard/0">
+      <mat-icon>storefront</mat-icon>
       <span class="ml10">Shop ABC</span>
-    </a>
+    </button>
     <span class="example-spacer"></span>
     <button *ngIf="!isLoggedIn" [routerLink]="'/login'" aria-label="Example icon-button with heart icon"
        class="example-icon favorite-icon mr20 m120"
@@ -30,7 +30,7 @@
       </button>
     </mat-action-list>
 
-    <a (click)="logout()" *ngIf="isLoggedIn" aria-label="Example icon-button with share icon" class="example-icon mr10"
+    <button (click)="logout()" *ngIf="isLoggedIn" aria-label="Example icon-button with share icon" class="example-icon mr10"
        mat-icon-button>LogOut
-    </a>
+    </button>
   </mat-toolbar>

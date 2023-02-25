@@ -1,0 +1,72 @@
+<mat-card *ngIf="user">
+  <h1>Welcome to Profile</h1>
+  <!--  {{user | json}}-->
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="container text-center">
+          <img alt="" class="profile-img" src="https://www.w3schools.com/howto/img_avatar.png">
+
+          <h2 class="mt20">{{user.fullName}}</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <table class="table text-center">
+              <tr>
+                <td>Username</td>
+                <td>{{user.username}}</td>
+              </tr>
+              <tr>
+                <td>UserId</td>
+                <td>{{user.id}}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{user.email}}</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>{{user.phone}}</td>
+              </tr>
+              <tr>
+                <td>Role</td>
+                <td>{{user.authorities[0].authority}}</td>
+              </tr>
+            </table>
+            <div class="text-center mt20">
+              <button    (click)="openDialog()" class="mr10" color="primary"
+                      mat-raised-button> Update
+              </button>
+              <button color="warn"
+                      mat-raised-button> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions class="text-center">
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+<div class="modal avc fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-update-profile></app-update-profile>
+      </div>
+
+    </div>
+  </div>
+</div>

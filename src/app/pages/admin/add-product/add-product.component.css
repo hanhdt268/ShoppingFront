@@ -1,7 +1,7 @@
 .w100{
     width: 100%;
 }
-.title{
+mat-grid-tile{
     border: 1px solid rgb(243, 234, 225);
 }
 /*.aabc{*/
@@ -31,14 +31,14 @@
 /*    margin-right: auto;*/
 
 /*}*/
-.text-wrapper{
-    display: table-cell;
-    vertical-align: middle;
-}
-/* .centerd{
-    text-align: center;
-} */
-.browse-button{
-    color: blue;
-    cursor: pointer;
-}
+/*.text-wrapper{*/
+/*    display: table-cell;*/
+/*    vertical-align: middle;*/
+/*}*/
+/*!* .centerd{*/
+/*    text-align: center;*/
+/*} *!*/
+/*.browse-button{*/
+/*    color: blue;*/
+/*    cursor: pointer;*/
+/*}*/

@@ -15,6 +15,7 @@ import {Category} from "../../../_model/category.model";
 export class HomeComponent implements OnInit {
   pageNumber = 0;
   cId:any;
+  back = false;
   productDetails:any = [];
   constructor(private _product: ProductService,
               private _imageProcessing: ImageProcessingService,
@@ -124,6 +125,9 @@ export class HomeComponent implements OnInit {
   previous() {
     this.pageNumber = this.pageNumber -1;
     this.getAllProduct()
+    if (this.pageNumber){
+      this.back = false
+    }
     this.getProductByCategory();
 
   }

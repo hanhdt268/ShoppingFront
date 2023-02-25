@@ -5,12 +5,8 @@
       <mat-icon mat-list-icon>home</mat-icon>
       All Product
     </button>
-    <button [routerLink]="'/user-dashboard/profile'" mat-list-item>
-      <mat-icon mat-list-icon>account_circle</mat-icon>
-      Profile
-    </button>
     <button *ngFor="let item of category" [routerLink]="'/client-dashboard/'+item.cId" mat-list-item>
-      <mat-icon mat-list-icon>account_circle</mat-icon>
+      <mat-icon mat-list-icon>dns</mat-icon>
       {{item.title}}
     </button>
   </mat-action-list>
